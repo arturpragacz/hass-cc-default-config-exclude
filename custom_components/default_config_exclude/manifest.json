@@ -1,0 +1,8 @@
+{
+  "domain": "default_config_exclude",
+  "name": "Default Config Exclude",
+  "version": "2023.7.1",
+  "codeowners": ["@arturpragacz"],
+  "integration_type": "system",
+  "quality_scale": "internal"
+}
