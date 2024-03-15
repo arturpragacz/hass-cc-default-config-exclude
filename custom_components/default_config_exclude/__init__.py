@@ -15,13 +15,11 @@ DEFAULT_CONFIG = "default_config"
 DOMAIN = DEFAULT_CONFIG + "_exclude"
 
 DEFAULT_SCHEMA = {
-    "early_loader_hook": False,
     "exclude": []
 }
 CONFIG_SCHEMA = vol.Schema({
-    vol.Optional(DOMAIN, default=DEFAULT_SCHEMA): {
-        vol.Optional("early_loader_hook", default=False): cv.boolean,
-        vol.Optional("exclude", default=[]): cv.ensure_list
+    vol.Required(DOMAIN, default=DEFAULT_SCHEMA): {
+        vol.Required("exclude", default=[]): cv.ensure_list
     }
 }, extra=vol.ALLOW_EXTRA)
 
@@ -47,5 +45,6 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
         )
 
     default_config.manifest["dependencies"] = new_dependencies
+    del default_config.dependencies # delete cached property
 
     return True
