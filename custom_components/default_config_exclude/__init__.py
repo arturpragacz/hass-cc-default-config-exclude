@@ -1,13 +1,13 @@
 """Component providing possibility to exclude integrations from the default config."""
 
 import logging
+
 import voluptuous as vol
 
 from homeassistant.core import HomeAssistant
 import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.typing import ConfigType
 from homeassistant.loader import async_get_integration
-
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -25,6 +25,7 @@ CONFIG_SCHEMA = vol.Schema({
 
 
 async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
+    """Set up the default_config_exclude component."""
     exclude_dependencies = set(config[DOMAIN]["exclude"])
     if not exclude_dependencies:
         return True
@@ -41,7 +42,8 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
 
     if exclude_dependencies:
         _LOGGER.warning(
-            f"The following dependencies are not in the default_config: {exclude_dependencies}"
+            "The following dependencies are not in the default_config: %s",
+            exclude_dependencies,
         )
 
     default_config.manifest["dependencies"] = new_dependencies
