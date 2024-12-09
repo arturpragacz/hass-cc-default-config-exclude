@@ -15,7 +15,6 @@ This integration can be installed using [HACS](https://hacs.xyz/).
 - Install it like every other HACS integration.
 - Restart Home Assistant.
 
-
 [![Open your Home Assistant instance and navigate to the repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=arturpragacz&repository=hass-cc-default-config-exclude&category=Integration)
 
 ## Configuration
@@ -25,9 +24,7 @@ Example `configuration.yaml`:
 ```yaml
 default_config:
 default_config_exclude:
-  early_loader_hook: true
   exclude:
     - dhcp
     - ssdp
-    - map
 ```
