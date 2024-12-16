@@ -1,14 +1,16 @@
 # Default Config Exclude
 
-This custom integration allows to exclude some integrations from Home Assistant Default Config.
+This custom component allows to exclude some integrations from Home Assistant Default Config.
+
+The focus is on reliability and stability. The objective is for it to work perfectly, every time, without exceptions.
 
 ## Prerequisites
 
-Make sure to install [Early Loader](https://github.com/arturpragacz/hass-cc-early-loader) before installing this integration.
+Make sure to install [Early Loader](https://github.com/arturpragacz/hass-cc-early-loader) before installing this component.
 
 ## Installation
 
-This integration can be installed using [HACS](https://hacs.xyz/).
+This component can be installed using [HACS](https://hacs.xyz/).
 
 - Add this repository as a custom integration repository to HACS.
 - The integration should now be available in HACS.
