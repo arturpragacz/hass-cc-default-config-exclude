@@ -1,6 +1,7 @@
 """Component providing possibility to exclude integrations from the default config."""
 
 import logging
+from typing import Any
 
 import voluptuous as vol
 
@@ -14,14 +15,15 @@ _LOGGER = logging.getLogger(__name__)
 DEFAULT_CONFIG = "default_config"
 DOMAIN = DEFAULT_CONFIG + "_exclude"
 
-DEFAULT_SCHEMA = {
-    "exclude": []
-}
-CONFIG_SCHEMA = vol.Schema({
-    vol.Required(DOMAIN, default=DEFAULT_SCHEMA): {
-        vol.Required("exclude", default=[]): cv.ensure_list
-    }
-}, extra=vol.ALLOW_EXTRA)
+DEFAULT_SCHEMA: dict[str, Any] = {"exclude": []}
+CONFIG_SCHEMA = vol.Schema(
+    {
+        vol.Required(DOMAIN, default=DEFAULT_SCHEMA): {
+            vol.Required("exclude", default=[]): cv.ensure_list
+        }
+    },
+    extra=vol.ALLOW_EXTRA,
+)
 
 
 async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
@@ -47,6 +49,6 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
         )
 
     default_config.manifest["dependencies"] = new_dependencies
-    del default_config.dependencies # delete cached property
+    del default_config.dependencies  # delete cached property
 
     return True
