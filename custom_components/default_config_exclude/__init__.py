@@ -16,20 +16,18 @@ DEFAULT_CONFIG = "default_config"
 DOMAIN = DEFAULT_CONFIG + "_exclude"
 
 
-DEFAULT_SCHEMA: dict[str, Any] = {"exclude": []}
-
-
-def _convert(value: Any) -> dict[str, Any]:
+def _ensure_dict(value: Any) -> dict[str, Any]:
     """Convert value to the dictionary."""
-    value_list = cv.ensure_list(value)
-    return {"exclude": value_list}
+    if isinstance(value, dict):
+        return value
+    return {"exclude": value}
 
 
 CONFIG_SCHEMA = vol.Schema(
     {
-        vol.Required(DOMAIN, default=DEFAULT_SCHEMA): vol.Any(
-            {vol.Required("exclude", default=[]): cv.ensure_list},
-            _convert,
+        vol.Required(DOMAIN): vol.All(
+            _ensure_dict,
+            {vol.Required("exclude", default=[]): vol.All(cv.ensure_list, [str])},
         )
     },
     extra=vol.ALLOW_EXTRA,
