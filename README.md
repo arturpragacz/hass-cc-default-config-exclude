@@ -1,6 +1,6 @@
 # Default Config Exclude
 
-This custom component allows to exclude some integrations from Home Assistant Default Config.
+This custom component allows to exclude some components from Home Assistant Default Config.
 
 The focus is on reliability and stability. The objective is for it to work perfectly, every time, without exceptions.
 
@@ -12,12 +12,12 @@ Make sure to install [Early Loader](https://github.com/arturpragacz/hass-cc-earl
 
 This component can be installed using [HACS](https://hacs.xyz/).
 
+[![Open your Home Assistant instance and navigate to the repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=arturpragacz&repository=hass-cc-default-config-exclude&category=Integration)
+
 - Add this repository as a custom integration repository to HACS.
 - The integration should now be available in HACS.
 - Install it like every other HACS integration.
 - Restart Home Assistant.
-
-[![Open your Home Assistant instance and navigate to the repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=arturpragacz&repository=hass-cc-default-config-exclude&category=Integration)
 
 ## Configuration
 
@@ -26,7 +26,6 @@ Example `configuration.yaml`:
 ```yaml
 default_config:
 default_config_exclude:
-  exclude:
-    - dhcp
-    - ssdp
+  - dhcp
+  - ssdp
 ```

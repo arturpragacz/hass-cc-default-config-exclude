@@ -1,7 +1,7 @@
 {
   "domain": "default_config_exclude",
   "name": "Default Config Exclude",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "codeowners": ["@arturpragacz"],
   "integration_type": "system",
   "documentation": "https://github.com/arturpragacz/hass-cc-default-config-exclude",
